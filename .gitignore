@@ -1,0 +1,10 @@
+.*
+!.editorconfig
+!.eslintrc
+!.gitignore
+!.travis.yml
+*.log*
+/browser.*
+/index.*
+node_modules
+package-lock.json

@@ -1,0 +1,46 @@
+{
+  "name": "element-merge",
+  "version": "0.1.0",
+  "description": "Merge the contents of 2 DOM elements",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0, ISC",
+  "repository": "jonathantneal/element-merge",
+  "homepage": "https://github.com/jonathantneal/element-merge#readme",
+  "bugs": "https://github.com/jonathantneal/element-merge/issues",
+  "main": "index.js",
+  "module": "index.mjs",
+  "browser": "browser.js",
+  "files": [
+    "browser.js",
+    "index.js",
+    "index.mjs"
+  ],
+  "scripts": {
+    "build": "npm run build:node && npm run build:browser",
+    "build:node": "rollup --config",
+    "build:browser": "NODE_ENV=browser rollup --config",
+    "postbuild:browser": "g1=$(gzip-size --level 0 browser.js); g2=$(gzip-size --level 9 browser.js); echo Bundle size: $g1 / $g2 gzip",
+    "prepublishOnly": "npm run test && npm run build",
+    "test": "npm run test:eclint && npm run test:eslint",
+    "test:eclint": "eclint check",
+    "test:eslint": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import-postcss": "^1.2.0",
+    "concurrently": "^4.1.0",
+    "cssnano": "^4.1.10",
+    "eclint": "^2.8.1",
+    "eslint": "^5.16.0",
+    "fse": "^4.0.1",
+    "gzip-size": "^5.1.1",
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^5.0.0"
+  }
+}
